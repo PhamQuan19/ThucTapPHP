@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thay thế từ trong chuỗi</title>
+
+
+    <style type="text/css">
+        html,
+        body {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+  
+        .flex-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+  
+        .box {
+          width: max-content;
+          border: 1px solid #ddd;
+          margin: auto;
+        }
+  
+        .title {
+          padding: 8px;
+          text-align: center;
+          font-size: 20px;
+          background-color: #f7ce61;
+          color: #9d4d06;
+          font-family: cursive;
+        }
+  
+        .form {
+          background-color: #f5e4b6;
+          padding: 8px;
+          font-family: sans-serif;
+          font-size: 13px;
+        }
+  
+        td {
+          padding-bottom: 8px;
+        }
+      </style>
+</head>
+<body>
+<div class="container">
+    <div class="flex-container">
+        <div class="box">
+          <div class="title">THAY THẾ TỪ TRONG CHUỖI</div>
+          <form class="form">
+			<table  align="center">
+			<tr>
+				<th>Chuỗi: </th>
+				<td><input type="text" id="chuoi"></td>
+			</tr>
+
+			<tr>
+				<th>Từ gốc: </th>
+				<td><input type="text" id="tugoc"></td>
+				
+			</tr>
+
+            <tr>
+				<th>Từ thay thế: </th>
+				<td><input type="text" id="tuthay"></td>
+				
+			</tr>
+            <tr>
+				<td></td>
+				<td>
+                    <div style="text-align: center">
+                    <button type="button" value="Thay thế" onclick="thayTheTu()">Thay thế</button>
+                </div>
+                </td>
+			</tr>
+            <tr>
+                <td></td>
+                <td><input type="text" id="ketQua" /></td>
+            </tr>
+        </div>
+    </table>
+    </form>
+  </div>
+</div>
+     <script>
+        function thayTheTu() {
+            // Lấy chuỗi từ ô nhập liệu
+            var chuoi = document.getElementById("chuoi").value;
+            
+            // Lấy từ cần thay thế và từ mới từ ô nhập liệu
+            var tugoc = document.getElementById("tugoc").value;
+            var tuthay = document.getElementById("tuthay").value;
+            
+            // Thực hiện thay thế từ
+            var chuoiMoi = chuoi.replace(tugoc, tuthay);
+            
+            // Hiển thị kết quả
+            document.getElementById("ketQua").value = chuoiMoi;
+        }
+    </script>
+            
+</body>
+</html>

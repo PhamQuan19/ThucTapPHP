@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THANH TOÁN TIỀN ĐIỆN</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">THANH TOÁN TIỀN ĐIỆN</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Tên chủ hộ:</th>
+              <td><input type="text" id="chuho" /></td>
+            </tr>
+            <tr>
+              <th>Chỉ số cũ:</th>
+              <td><input type="number" id="chiSoCu" /></td>
+              <td>(Kw)</td>
+            </tr>
+            <tr>
+              <th>Chỉ số mới:</th>
+              <td><input type="number" id="chiSoMoi" /></td>
+              <td>(Kw)</td>
+            </tr>
+            <tr>
+              <th>Đơn giá:</th>
+              <td><input type="number" id="donGia" value="2000" readonly /></td>
+              <td>(VND)</td>
+            </tr>
+            <tr>
+              <th>Số tiền thanh toán:</th>
+              <td><input type="number" id="soTienThanhToan" /></td>
+              <td>(VND)</td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input type="button" value="Tính" onclick="tinhTienDien()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhTienDien() {
+        // Lấy các giá trị từ các trường nhập liệu
+        var chiSoCu = parseFloat(document.getElementById("chiSoCu").value);
+        var chiSoMoi = parseFloat(document.getElementById("chiSoMoi").value);
+        var donGia = 2000;
+
+        // Tính số tiền thanh toán
+        var soTienThanhToan = (chiSoMoi - chiSoCu) * donGia;
+
+        // Hiển thị kết quả
+        document.getElementById("soTienThanhToan").value =
+          soTienThanhToan.toFixed(0); // Làm tròn đến 2 chữ số thập phân
+      }
+    </script>
+  </body>
+</html>

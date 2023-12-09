@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đọc số bằng chữ</title>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">Đọc số bằng chữ</div>
+        <form class="form">
+          <table>
+            <tr>
+              <th>Nhập số (0->9):</th>
+              <th></th>
+              <th>Bằng chữ:</th>
+            </tr>
+
+            <tr>
+              <td><input type="number" id="so" /></td>
+              <td><input type="button" value="=>" onclick="docSo()" /></td>
+              <td><input type="text" id="chu" readonly /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function docSo() {
+        var so = parseInt(document.getElementById("so").value);
+        var chu;
+
+        switch (so) {
+          case 0:
+            chu = "không";
+            break;
+          case 1:
+            chu = "một";
+            break;
+          case 2:
+            chu = "hai";
+            break;
+          case 3:
+            chu = "ba";
+            break;
+          case 4:
+            chu = "bốn";
+            break;
+          case 5:
+            chu = "năm";
+            break;
+          case 6:
+            chu = "sáu";
+            break;
+          case 7:
+            chu = "bảy";
+            break;
+          case 8:
+            chu = "tám";
+            break;
+          case 9:
+            chu = "chín";
+            break;
+          default:
+            chu = "";
+        }
+
+        document.getElementById("chu").value = chu;
+      }
+    </script>
+  </body>
+</html>

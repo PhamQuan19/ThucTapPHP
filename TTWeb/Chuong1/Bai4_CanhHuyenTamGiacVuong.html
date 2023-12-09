@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CẠNH HUYỀN TAM GIÁC VUÔNG</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">CẠNH HUYỀN TAM GIÁC VUÔNG</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Cạnh A:</th>
+              <td><input type="number" id="canhA" /></td>
+            </tr>
+
+            <tr>
+              <th>Cạnh B:</th>
+              <td><input type="number" id="canhB" /></td>
+            </tr>
+
+            <tr>
+              <th>Cạnh Huyền:</th>
+              <td><input type="number" id="canhHuyen" /></td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input type="button" value="Tính" onclick="tinhCanhHuyen()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhCanhHuyen() {
+        // Lấy giá trị của cạnh a và cạnh b từ các trường nhập liệu
+        var canhA = parseFloat(document.getElementById("canhA").value);
+        var canhB = parseFloat(document.getElementById("canhB").value);
+
+        // Tính cạnh huyền sử dụng định lý Pythagoras
+        var canhHuyen = Math.sqrt(Math.pow(canhA, 2) + Math.pow(canhB, 2));
+
+        // Hiển thị kết quả
+        document.getElementById("canhHuyen").value = canhHuyen.toFixed(2); // Làm tròn đến 2 chữ số thập phân
+      }
+    </script>
+  </body>
+</html>

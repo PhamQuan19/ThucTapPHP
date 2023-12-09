@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KẾT QUẢ HỌC TẬP</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">KẾT QUẢ HỌC TẬP</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Điểm HK1:</th>
+              <td><input type="number" id="diemHK1" /></td>
+            </tr>
+
+            <tr>
+              <th>Điểm HK2:</th>
+              <td><input type="number" id="diemHK2" /></td>
+            </tr>
+
+            <tr>
+              <th>Điểm trung bình:</th>
+              <td><input type="text" id="diemTrungBinh" readonly /></td>
+            </tr>
+            <tr>
+              <th>Kết quả:</th>
+              <td><input type="text" id="ketQua" readonly /></td>
+            </tr>
+            <tr>
+              <th>Xếp loại học lực:</th>
+              <td><input type="text" id="xepLoai" readonly /></td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input
+              type="button"
+              value="Xem kết quả"
+              onclick="tinhDiemTrungBinh()"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhDiemTrungBinh() {
+        // Lấy giá trị điểm HK1 và HK2 từ các trường nhập liệu
+        var diemHK1 = parseFloat(document.getElementById("diemHK1").value);
+        var diemHK2 = parseFloat(document.getElementById("diemHK2").value);
+
+        // Tính điểm trung bình
+        var diemTrungBinh = (diemHK1 + diemHK2 * 2) / 3;
+
+        // Hiển thị điểm trung bình
+        document.getElementById("diemTrungBinh").value =
+          diemTrungBinh.toFixed(2);
+
+        // Xác định xếp loại học lực
+        var xepLoai = "";
+        if (diemTrungBinh >= 8) {
+          xepLoai = "Giỏi";
+        } else if (diemTrungBinh >= 6.5) {
+          xepLoai = "Khá";
+        } else if (diemTrungBinh >= 5) {
+          xepLoai = "Trung bình";
+        } else {
+          xepLoai = "Yếu";
+        }
+
+        // Hiển thị xếp loại học lực
+        document.getElementById("xepLoai").value = xepLoai;
+
+        // Xác định kết quả học tập
+        var ketQua = diemTrungBinh >= 5 ? "Được lên lớp" : "Ở lại lớp";
+
+        // Hiển thị kết quả học tập
+        document.getElementById("ketQua").value = ketQua;
+      }
+    </script>
+  </body>
+</html>

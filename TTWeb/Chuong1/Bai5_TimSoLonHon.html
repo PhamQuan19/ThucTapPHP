@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TÌM SỐ LỚN HƠN</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">TÌM SỐ LỚN HƠN</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Số A:</th>
+              <td><input type="number" id="soA" /></td>
+            </tr>
+
+            <tr>
+              <th>Số B:</th>
+              <td><input type="number" id="soB" /></td>
+            </tr>
+
+            <tr>
+              <th>Số lớn hơn:</th>
+              <td><input type="number" id="soLon" /></td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input type="button" value="Tính" onclick="tinhSoLonHon()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhSoLonHon() {
+        // Lấy giá trị của số a và số b từ các trường nhập liệu
+        var soA = parseFloat(document.getElementById("soA").value);
+        var soB = parseFloat(document.getElementById("soB").value);
+
+        // So sánh 2 số a và b
+        var soLon = soA > soB ? soA : soB;
+
+        // Hiển thị kết quả
+        document.getElementById("soLon").value = soLon.toFixed(0); // Làm tròn đến 2 chữ số thập phân
+      }
+    </script>
+  </body>
+</html>

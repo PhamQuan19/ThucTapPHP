@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tách tên</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 600px;
+      }
+
+      .box {
+        width: max-content;
+        width: 600px;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 1px;
+        height: 50px;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: #320098;
+        color: white;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #B0C0FE;
+        padding: 15px;
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+
+      td {
+        padding-bottom: 10px;
+      }
+
+      .fullName{
+        width: 400px;
+        background-color: white;
+      }
+
+      input{
+      	width: 200px;
+      	height: 25px;
+        background-color: #C6FFF7;
+
+      }
+
+      .submit{
+        background-color: #CAFDCD;
+        margin-left: 30px;
+        height: 30px;
+        width: 150px;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">Tách Họ Và Tên</div>
+
+        <form class="form" method="POST" id="tachten">
+          <table>
+            <tbody>
+             
+               <tr>
+                <td>Họ và tên:</td>
+                <td><input class="fullName" type="text" id="hoten" /></td>
+              </tr>
+              <tr>
+                <td>Họ</td>
+                <td><input type="text" id="ho" /></td>
+              </tr>
+
+               <tr>
+                <td>Tên đệm</td>
+                <td><input type="text" id="ten_dem" /></td>
+              </tr>
+
+              <tr>
+                <td>Tên</td>
+                <td><input type="text" id="ten" /></td>
+              </tr>
+
+               <tr>
+                <td></td>
+                <td><button class="submit" type="button" onclick="tachTen()">Tách Tên</button></td>
+                <!-- <td><input class="submit" width="300px" type="submit"  value="Tách họ tên"></td> -->
+
+                
+              </tr>
+
+            
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+    <script>
+
+
+      function tachTen() {
+          const tenInput = document.getElementById("hoten").value;
+          const parts = tenInput.split(" ");
+          let ho = "";
+          let tenDem = "";
+          let ten = "";
+
+          if (parts.length >= 1) {
+            ho = parts[0];
+          }
+          if (parts.length >= 2) {
+            ten = parts[parts.length - 1];
+          }
+          if (parts.length >= 3) {
+            tenDem = parts.slice(1, -1).join(" ");
+          }
+
+          document.getElementById("ho").value = ho;
+          document.getElementById("ten_dem").value = tenDem;
+          document.getElementById("ten").value = ten;
+      }
+
+    </script>
+   
+  </body>
+</html>
+
+/*
+parts.slice(1, -1): Phương thức slice(1, -1) được sử dụng để trích xuất một phần của mảng parts. Trong trường hợp này, 1 là chỉ số bắt đầu (bắt đầu từ phần tử thứ hai), và -1 là chỉ số kết thúc (kết thúc trước phần tử cuối cùng). Điều này có nghĩa là chúng ta trích xuất các phần tử từ phần tử thứ hai đến phần tử trước phần tử cuối cùng trong mảng parts.
+
+.join(" "): Phương thức join(" ") được sử dụng để nối các phần tử trong mảng đã trích xuất lại thành một chuỗi. Trong trường hợp này, chúng ta sử dụng dấu cách " " làm ký tự nối, nên các phần tử trong mảng sẽ được nối lại với nhau bằng dấu cách.
+*/

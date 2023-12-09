@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính GCD và LCM</title>
+</head>
+<body>
+    <h1>Tính GCD và LCM</h1>
+    <form id="gcdLcmForm">
+        <label for="num1">Nhập số thứ nhất:</label>
+        <input type="number" id="num1" required>
+        <br>
+        <label for="num2">Nhập số thứ hai:</label>
+        <input type="number" id="num2" required>
+        <br>
+        <input type="submit" value="Tính GCD và LCM">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        // Hàm tính GCD
+        function gcd(a, b) {
+            if (b === 0) {
+                return a;
+            }
+            return gcd(b, a % b);
+        }
+
+        // Hàm tính LCM
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        // Xử lý sự kiện nút submit
+        document.getElementById("gcdLcmForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+
+            // Lấy giá trị từ hai ô nhập
+            const num1 = parseInt(document.getElementById("num1").value);
+            const num2 = parseInt(document.getElementById("num2").value);
+
+            // Tính GCD và LCM
+            const gcdResult = gcd(num1, num2);
+            const lcmResult = lcm(num1, num2);
+
+            // Hiển thị kết quả
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = `GCD của ${num1} và ${num2} là: ${gcdResult}<br>LCM của ${num1} và ${num2} là: ${lcmResult}`;
+        });
+    </script>
+</body>
+</html>

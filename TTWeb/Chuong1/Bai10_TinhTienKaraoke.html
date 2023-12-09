@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TÍNH TIỀN KARAOKE</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">TÍNH TIỀN KARAOKE</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Giờ bắt đầu:</th>
+              <td><input type="number" id="gioBatDau" /> (h)</td>
+            </tr>
+
+            <tr>
+              <th>Giờ kết thúc:</th>
+              <td><input type="number" id="gioKetThuc" /> (h)</td>
+            </tr>
+            <tr>
+              <th>Tiền thanh toán:</th>
+              <td><input id="ketQua" readonly /> (VND)</td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input type="button" value="Tính tiền" onclick="tinhTienGio()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhTienGio() {
+        // Lấy giá trị giờ bắt đầu và giờ kết thúc từ các trường nhập liệu
+        var gioBatDau = parseInt(document.getElementById("gioBatDau").value);
+        var gioKetThuc = parseInt(document.getElementById("gioKetThuc").value);
+
+        // Thiết lập giá tiền theo các trường hợp
+        var giaTien = 0;
+
+        // Trường hợp 1: cả bắt đầu và kết thúc đều nhỏ hơn hoặc bằng 17h
+        if (gioBatDau < 10 && gioKetThuc < 24) {
+          document.getElementById("ketQua").value = "Không mở cửa";
+          return; // Kết thúc hàm và không tính tiền
+        }
+
+        // Trường hợp 2: bắt đầu <= 10h và < 17h
+        if (gioBatDau >= 10 && gioBatDau < 17) {
+          giaTien = 20000;
+        }
+
+        // Trường hợp 3: bắt đầu >= 17h và kết thúc <= 24h
+        if (gioBatDau >= 17 && gioKetThuc <= 24) {
+          giaTien = 45000;
+        }
+
+        // Tính tiền giờ
+        var soGio = gioKetThuc - gioBatDau;
+        var tienGio = soGio * giaTien;
+
+        // Hiển thị kết quả tiền giờ
+        document.getElementById("ketQua").value = tienGio.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

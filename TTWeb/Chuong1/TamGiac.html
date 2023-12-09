@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Thanh toán tiền điện</title>
+</head>
+
+<body>
+    <div class="dientich-container">
+        <span class="span">
+            <div class="dientich-head">Thanh toán tiền điện</div>
+            <div class="dientich-chieudai">
+                <label for="canh1">Cạnh 1:</label>
+                <input type="number" id="canh1" required>
+            </div>
+            <div class="dientich-chieurong">
+                <label for="canh2">Cạnh 2:</label>
+                <input type="number" id="canh2" required>
+            </div>
+            <div class="dientich-dientich">
+                <label for="canh3">Cạnh 3:</label>
+                <input class="Sotienthanhtoa" type="number" id="canh3" required>
+            </div>
+            <div class="dientich-dientich">
+                <label for="ketqua">Loại tam giác:</label>
+                <input class="Sotienthanhtoan1" type="text" id="ketqua" value="" readonly>
+            </div>
+
+            <div class="dientich-button">
+                <button class="tinh" id="tinh" onclick="ketqua()"> Tính </button>
+            </div>
+        </span>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+<script type="text/javascript">
+//     document.getElementById("tinh").addEventListener("click", function () {
+//     var a = parseFloat(document.getElementById("canh1").value);
+//     var b = parseFloat(document.getElementById("canh2").value);
+//     var c = parseFloat(document.getElementById("canh3").value);
+//     if (a < b + c && b < a + c && c < a + b) {
+//         if (a ==b && b == c) {
+//             kq = "Là tam giác cân";
+//         }
+//         else if (a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b) {
+//             kq.innerHTML = "Là tam giác vuông";
+//         }
+//         else if (a == b || a == c || b == c) {
+//             kq.textContent = "Day la tam giac can";
+//         }
+//         else if
+//             (a == b || a == c || b == c && a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b) {
+//             kq.textContent = "Day la tam giac can";
+//         }
+//         else  {
+//             kq.textContent = "Day la tam giac thuong";
+//         }
+//     } 
+//     else {
+//         kq.textContent = "Khong phai la tam giac";
+//     }
+//     var kq = document.getElementById("ketqua").value;
+
+// });
+
+    function ketqua(){
+    var a = parseFloat(document.getElementById("canh1").value);
+    var b = parseFloat(document.getElementById("canh2").value);
+    var c = parseFloat(document.getElementById("canh3").value);
+    if (a < b + c && b < a + c && c < a + b) {
+        if (a ==b && b == c) {
+            kq = "Là tam giác cân";
+        }
+        else if (a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b) {
+            kq.textContent = "Là tam giác vuông";
+        }
+        else if (a == b || a == c || b == c) {
+            kq.textContent = "Day la tam giac can";
+        }
+        else if
+            (a == b || a == c || b == c && a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b) {
+            kq.textContent = "Day la tam giac can";
+        }
+        else  {
+            kq.textContent = "Day la tam giac thuong";
+        }
+    } 
+    else {
+        kq.textContent = "Khong phai la tam giac";
+    }
+    var kq = document.getElementById("ketqua").value;
+
+    }
+    
+</script>
+
+</html>

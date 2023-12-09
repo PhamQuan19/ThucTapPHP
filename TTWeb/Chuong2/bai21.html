@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tong Tich</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 30px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 15px;
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+
+      td {
+        padding-bottom: 10px;
+      }
+
+      input{
+      	width: 200px;
+      	height: 25px;
+      }
+
+      .batdau_ketthuc{
+      	width: 40px;
+      	height: 20px;
+      }
+      .dt1{
+      	background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">UCLN & BCNN</div>
+
+        <form class="form" method="POST" id="gcdLcmForm">
+          <table>
+            <tbody>
+             
+               <tr>
+                <td>Số A:</td>
+                <td><input type="text" id="num1" /></td>
+              </tr>
+              <tr>
+                <td>Số B</td>
+                <td><input type="text" id="num2" /></td>
+              </tr>
+
+               <tr>
+                <td>CGD</td>
+                <td><input type="text" id="gcdResult" /></td>
+              </tr>
+
+              <tr>
+                <td>LCM</td>
+                <td><input type="text" id="lcmResult" /></td>
+              </tr>
+              
+
+
+               <tr>
+                <td></td>
+                <!-- <td><button type="submit"onclick="Result()">Tìm UCLN và BCNN</button></td> -->
+                <td><input type="submit" value="Tính GCD và LCM"></td>
+
+                
+              </tr>
+
+            
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+    <script>
+          // Hàm tính GCD
+        function gcd(a, b) {
+            if (b === 0) {
+                return a;
+            }
+            return gcd(b, a % b);
+        }
+
+        // Hàm tính LCM
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        // Xử lý sự kiện nút submit
+        document.getElementById("gcdLcmForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+
+            // Lấy giá trị từ hai ô nhập
+            const num1 = parseInt(document.getElementById("num1").value);
+            const num2 = parseInt(document.getElementById("num2").value);
+
+            // Tính GCD và LCM
+            const gcdResult = gcd(num1, num2);
+            const lcmResult = lcm(num1, num2);
+
+            // Hiển thị kết quả trong các ô nhập
+            document.getElementById("gcdResult").value = gcdResult;
+            document.getElementById("lcmResult").value = lcmResult;
+        });
+    
+
+
+
+    </script>
+   
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .container{
+            margin-top: 30px;
+            text-align: center;
+            margin-left: 30%;
+            background-color: #f5e4b6;
+             width: 500px;
+        }
+
+        input{
+            margin: 5px;
+            height: 20px;
+            width: 200px;
+            }
+
+         h1{
+            background-color: #f7ce61;
+            color: #9d4d06;
+            font-family: cursive;
+         }
+
+         .result{
+            width: 300px;
+         }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+            <h1 align="center">Thay Thế Từ Trong Chuỗi</h1>
+        <form action="" method="Post">
+            <table  align="center" >
+            <tr>
+                <th>Chuỗi:</th>
+                <td><input type="text" name="text" id="originalText"></td>
+            </tr>
+
+            <tr>
+                <th>từ gốc: </th>
+                <td><input type="text" name="keyword" id="searchInput"></td>
+                
+            </tr>
+             <tr>
+                <th>Từ thay thế: </th>
+                <td><input type="text" name="replaceInput" id="replaceInput"></td>
+                
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><button type="button" onclick="replaceText()">Thay thế</button></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="text"id="outputText" class="result"></td>
+            </tr>
+
+
+        </table>
+        </form>
+    
+    </div>
+
+
+
+     <script>
+
+    
+        function replaceText() {
+            // Lấy giá trị của các inpu
+            // chuoi text
+            var originalText = document.getElementById("originalText").value;
+            // tu gốc
+            var searchKeyword = document.getElementById("searchInput").value;
+            //tu thay the
+            var replaceKeyword = document.getElementById("replaceInput").value;
+
+            // Sử dụng hàm replace để thay thế chuỗi
+            var replacedText = originalText.replace(new RegExp(searchKeyword, 'g'), replaceKeyword);
+
+            // Hiển thị kết quả
+            var outputText= document.getElementById("outputText");
+           outputText.value = replacedText;
+
+       }
+
+    </script>
+
+
+
+
+     
+</body>
+</html>

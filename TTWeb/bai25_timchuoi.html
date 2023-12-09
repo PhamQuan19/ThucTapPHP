@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tìm kiếm chuỗi</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">Tìm Kiếm Chuỗi</div>
+
+        <form class="form">
+          <table>
+            <tbody>
+              <tr>
+                <td>Chuỗi:</td>
+                <td><input type="text" id="chuoi" /></td>
+              </tr>
+              <tr>
+                <td>Từ tìm kiếm:</td>
+                <td><input type="text" id="key" /></td>
+              </tr>
+              
+               <tr>
+                <td></td>
+                <td><button type="button" onclick="search()">Tìm kiếm</button></td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td><input type="text" id="ketqua" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <script>
+
+      function search() {
+            // Lấy giá trị từ khóa và chuỗi cần tìm kiếm
+            var keyword = document.getElementById("key").value;
+            var textToSearch = document.getElementById("chuoi").value;
+
+            // Thực hiện tìm kiếm
+             var result = findWord(keyword, textToSearch);
+
+            // Hiển thị kết quả
+            var resultText = document.getElementById("ketqua");
+            if(result){
+                ketqua.value = "Tìm thấy '" + keyword + "'";
+
+            }
+            else{
+                ketqua.value = "Không tìm thấy '" + keyword + "'";
+            }
+          }
+
+            function findWord(keyword, text) {
+            // Sử dụng phương thức indexOf để tìm kiếm từ khóa trong chuỗi
+            // Nếu tìm thấy, indexOf sẽ trả về vị trí đầu tiên của từ khóa trong chuỗi, nếu không trả về -1.
+            if (text.indexOf(keyword) !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+  </body>
+</html>

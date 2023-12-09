@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tong Tich</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 30px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 15px;
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+
+      td {
+        padding-bottom: 10px;
+      }
+
+      input{
+      	width: 200px;
+      	height: 25px;
+      }
+
+      .batdau_ketthuc{
+      	width: 40px;
+      	height: 20px;
+      }
+      .dt1{
+      	background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">Tìm Kiếm Chuỗi</div>
+
+        <form class="form" method="POST">
+          <table>
+            <tbody>
+              <tr>
+                <td>Giới hạn của dãy số:</td>
+                <td class="dt1">Số bắt đầu<input class="batdau_ketthuc" type="text" id="num1" /> số kết thúc <input type="text" class="batdau_ketthuc" id="num2" /></td>
+              </tr>
+              <tr>
+                <th>Kết quả:</th>
+              </tr>
+               <tr>
+                <td>Tổng các số:</td>
+                <td><input type="text" id="tong" /></td>
+              </tr>
+              <tr>
+                <td>Tích các số</td>
+                <td><input type="text" id="tich" /></td>
+              </tr>
+
+               <tr>
+                <td>Tổng các số chẵn</td>
+                <td><input type="text" id="tongChan" /></td>
+              </tr>
+
+              <tr>
+                <td>Tổng các số lẻ</td>
+                <td><input type="text" id="tongLe" /></td>
+              </tr>
+              
+
+
+               <tr>
+                <td></td>
+                <td><button type="button" onclick="Result()">Tính Toán</button></td>
+              </tr>
+
+            
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+<script>
+        // Hàm JavaScript để cập nhật giá trị của trường input
+        function Result() {
+            // Lấy giá trị của num1 và num2 từ các trường input
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            
+            // Kiểm tra xem có thể tính tổng hay không
+            if (!isNaN(num1) && !isNaN(num2)) {
+                // Tính tổng
+                var sum =0;
+                var tich=1;
+                var tongChan=0;
+                var tongLe=0;
+                for (var i = num1; i < num2; i++) {
+                	sum+=i;
+                	tich *=i;
+
+                	if(i%2==0){
+                		tongChan+=i;
+                	}else{
+                		tongLe+=i;
+                	}
+                }
+                
+                // Cập nhật giá trị của trường input "result"
+                document.getElementById("tong").value = sum;
+                document.getElementById("tich").value = tich;
+                 document.getElementById("tongChan").value = tongChan;
+                 document.getElementById("tongLe").value = tongLe;
+
+            } else {
+                // Nếu không thể tính tổng, đặt giá trị trường input "result" thành rỗng
+                document.getElementById("result").value = "";
+            }
+
+
+        }
+    </script>
+   
+  </body>
+</html>

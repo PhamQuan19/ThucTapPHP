@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KẾT QUẢ THI ĐẠI HỌC</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: sans-serif;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">KẾT QUẢ THI ĐẠI HỌC</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Toán:</th>
+              <td><input type="number" id="diemToan" /></td>
+            </tr>
+
+            <tr>
+              <th>Lý:</th>
+              <td><input type="number" id="diemLy" /></td>
+            </tr>
+
+            <tr>
+              <th>Hoá:</th>
+              <td><input type="number" id="diemHoa" /></td>
+            </tr>
+            <tr>
+              <th>Điểm chuẩn:</th>
+              <td><input type="number" id="diemChuan" /></td>
+            </tr>
+            <tr>
+              <th>Tổng điểm:</th>
+              <td><input type="text" id="tongDiem" readonly /></td>
+            </tr>
+            <tr>
+              <th>Kết quả thi:</th>
+              <td><input type="text" id="ketQua" readonly /></td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input
+              type="button"
+              value="Xem kết quả"
+              onclick="tinhTongDiem()()"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhTongDiem() {
+        // Lấy giá trị điểm từ các trường nhập liệu
+        var diemToan = parseFloat(document.getElementById("diemToan").value);
+        var diemLy = parseFloat(document.getElementById("diemLy").value);
+        var diemHoa = parseFloat(document.getElementById("diemHoa").value);
+        var diemChuan = parseFloat(document.getElementById("diemChuan").value);
+
+        // Tính tổng điểm
+        var tongDiem = diemToan + diemLy + diemHoa;
+
+        // Hiển thị tổng điểm
+        document.getElementById("tongDiem").value = tongDiem.toFixed(0);
+
+        // Xác định kết quả thi đại học
+        var ketQua = "";
+        if (
+          diemToan !== 0 &&
+          diemLy !== 0 &&
+          diemHoa !== 0 &&
+          tongDiem >= diemChuan
+        ) {
+          ketQua = "Đậu";
+        } else {
+          ketQua = "Rớt";
+        }
+
+        // Hiển thị kết quả thi đại học
+        document.getElementById("ketQua").value = ketQua;
+      }
+    </script>
+  </body>
+</html>

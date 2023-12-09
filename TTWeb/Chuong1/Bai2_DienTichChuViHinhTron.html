@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIỆN TÍCH VÀ CHU VI HÌNH TRÒN</title>
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .box {
+        width: max-content;
+        border: 1px solid #ddd;
+        margin: auto;
+      }
+
+      .title {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #f7ce61;
+        color: #9d4d06;
+        font-family: cursive;
+      }
+
+      .form {
+        background-color: #f5e4b6;
+        padding: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+
+      td {
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="box">
+        <div class="title">DIỆN TÍCH VÀ CHU VI HÌNH TRÒN</div>
+        <form class="form">
+          <table align="center">
+            <tr>
+              <th>Bán kính:</th>
+              <td><input type="number" id="banKinh" /></td>
+            </tr>
+
+            <tr>
+              <th>Diện tích:</th>
+              <td><input type="number" id="dienTich" /></td>
+            </tr>
+
+            <tr>
+              <th>Chu vi:</th>
+              <td><input type="number" id="chuVi" /></td>
+            </tr>
+          </table>
+          <div style="text-align: center">
+            <input type="button" value="Tính" onclick="tinhToan()" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function tinhToan() {
+        // Lấy giá trị bán kính từ trường input
+        var banKinh = parseFloat(document.getElementById("banKinh").value);
+
+        // Tính diện tích và chu vi
+        var dienTich = Math.PI * Math.pow(banKinh, 2);
+        var chuVi = 2 * Math.PI * banKinh;
+
+        console.log(banKinh);
+        console.log(dienTich);
+        console.log(chuVi);
+
+        // Hiển thị kết quả trên trang web
+        document.getElementById("dienTich").value = dienTich.toFixed(2);
+        document.getElementById("chuVi").value = chuVi.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
